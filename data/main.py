@@ -1,8 +1,5 @@
 import classifier
 
 def main():
-	with open("can.jpg") as can:
-
-		model = classifier.model(can)
-
+	mo = classifier.model('img/pear.jpg')
 main()
