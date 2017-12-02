@@ -26,5 +26,4 @@ print(type(base64str))
 # print("check len % 4: " + str(len(bytes64) % 4))
 
 with open('output.jpg', 'wb') as f:
-    # f.write(base64.decodestring(bytes64))
     f.write(base64.decodestring(base64str))
