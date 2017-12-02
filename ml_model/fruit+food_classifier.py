@@ -8,7 +8,7 @@ from keras.callbacks import ModelCheckpoint, LearningRateScheduler, TensorBoard,
 import food_classifier
 
 img_width, img_height = 256, 256
-train_data_dir = "data/train"
+train_data_dir = "data/data"
 validation_data_dir = "data/val"
 nb_train_samples = 4125
 nb_validation_samples = 466 
