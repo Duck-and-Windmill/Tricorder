@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 '''VGG16 model for Keras.
 
 # Reference:
@@ -36,7 +36,7 @@ WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases
 def VGG16(include_top=True, weights='imagenet',
           input_tensor=None, input_shape=None,
           pooling=None,
-          classes=1000):
+          classes=1000, retrain=False):
     """Instantiates the VGG16 architecture.
 
     Optionally loads weights pre-trained
@@ -99,7 +99,7 @@ def VGG16(include_top=True, weights='imagenet',
                                       default_size=224,
                                       min_size=48,
                                       data_format=K.image_data_format(),
-                                      include_top=include_top)
+                                      require_flatten=include_top)
 
     if input_tensor is None:
         img_input = Input(shape=input_shape)
@@ -187,6 +187,7 @@ def VGG16(include_top=True, weights='imagenet',
                               '`image_data_format="channels_last"` in '
                               'your Keras config '
                               'at ~/.keras/keras.json.')
+
     return model
 
 
