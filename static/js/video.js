@@ -2,9 +2,11 @@
 
 function main() {
   let video = document.getElementById('video')
-  let canvas = document.createElement('canvas')
+  // let canvas = document.createElement('canvas')
+  let canvas = document.getElementById('canvas')
+  let image = document.getElementById('image')
   let started = false
-  let sendRate = 5 // send rate per second
+  let sendRate = 7 // send rate per second
 
   let constraints = {
     audio: false,
@@ -16,22 +18,37 @@ function main() {
 
     started = true
 
-    video.width = video.videoWidth
-    video.height = video.videoHeight
+    let width = video.videoWidth
+    let height = video.videoHeight
 
-    canvas.width = video.videoWidth
-    canvas.height = video.videoHeight
+    video.width = width
+    video.height = height
+
+    canvas.width = width
+    canvas.height = height
+
+    let context = canvas.getContext('2d')
+    context.drawImage(video, 0, 0, width, height)
+    let data = canvas.toDataURL('image/jpeg')
+
+    // console.log(data)
+    post('/sendStaticImage', 'image='+data).then(() => {
+        console.log('done')
+      }
+    )
 
     window.setInterval(() => {
       let context = canvas.getContext('2d')
       context.drawImage(video, 0, 0, width, height)
-      data = canvas.toDataURL('image/jpg')
+      let data = canvas.toDataURL('image/jpeg')
+      image.src = data
 
-      post('/sendStaticImage', {
-        image: data
-      }, () => {
-        console.log('done')
-      })
+      console.log(data)
+
+      post('/sendStaticImage', 'image='+data).then(() => {
+          console.log('done')
+        }
+      )
     }, sendRate * 1000)
   })
 
@@ -46,16 +63,16 @@ function post(url, data) {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest();
     request.open('POST', url, true);
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     request.addEventListener('readystatechange', (event) => {
-      if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+      if (request.readyState == XMLHttpRequest.DONE && request.status == 200) {
         resolve(event.responseText)
       }
-      else {
-        reject()
-      }
-    }
+      // else {
+      //   reject()
+      // }
+    })
 
     request.send(data);
   })
