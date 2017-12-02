@@ -18,7 +18,6 @@ class model():
 		model = Sequential()
 		
 		model.add(Dense(40, (8,)), activation="sigmoid")
-
 		model.add(Dense(40), activation="sigmoid")
 
 	def get_data(arr, dest, date):
