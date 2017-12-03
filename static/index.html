@@ -6,6 +6,7 @@
 	<link rel="icon" href="static/icon.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="static/styles.css">
+	<link rel="stylesheet" href="static/css/style1.css">
 	<link href="https://fonts.googleapis.com/css?family=Lobster|Roboto" rel="stylesheet">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -20,6 +21,12 @@
 			<h1 id="title"> Food.c </h1> <!-- rgb(220,50,0) -->
 			<h3 id="subtext"> A scanning tool to <br> stop <span style="font-weight: bold; color: orange; font-size: 1.5em">killing</span> your <span style="font-size: 1.5em;font-weight: bold; color: orange">die-t</span>. </h3>
 		</article>
+
+		<div id="namer">
+  			<div id="namer-input" class="modern">
+  			 <input id="nameInput" type="text" name="namername" placeholder="your name">
+  			</div>
+		</div>
 	</div>
 
 	<div class="container-fluid main panel-2" style="display: none">
@@ -36,14 +43,14 @@
 			</div>
 		</div>
 		<div id="info-box">
-			<div id="info"><h3 id="info-text" style="display: block;height:50%; padding-top: 4%">Hi! Register or verify your profile below.</h3></div>
+			<div id="info"><h3 id="info-text" style="display: block;height:50%; padding-top: 5%">Hi! Register or verify your profile.</h3></div>
 			<article id="nut-info">
 				<h1 id="item" style="display: block"></h1>
 				<p id="facts">
 					
 				</p>
 			</article>
-			<div id="photo"></div>
+			<div id="photo"><img id="show-0" class="showcase" src=""><img id="show-1" class="showcase" src=""><img src="" class="showcase" id="show-2"></div>
 		</div>
 	</div>
 
@@ -75,8 +82,8 @@
   		  <span class="sr-only"></span>
   		</a> -->
 
-		  <a class="carousel-control-next" id="next" href="#" role="button" data-slide="next">
-		    <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+		  <a class="carousel-control-next" id="next" href="#" role="button" data-slide="next" style="position: absolute; bottom: 10px;right:10px;width: 2%; top:97%;">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 		    <span class="sr-only">	</span>
 		  </a>
 	</div>
