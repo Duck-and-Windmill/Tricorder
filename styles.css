@@ -1,0 +1,99 @@
+
+
+@media (min-width: 576px) {
+
+}
+
+html, body {
+	height: 100%;
+}
+
+.main {
+	display: flex;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+}
+
+#control-box {
+	display: block;
+	position: absolute;
+	top:0;left:0;right:0;bottom:0;
+	width: 100%;
+	height: 100%;
+}
+
+.panel-1 {
+	align-content: center;
+	background: url('salad.jpg') no-repeat;
+	background-size: cover;
+}
+
+.panel-1:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
+	opacity: .4; 
+}
+
+.panel-1.hidden:before {
+	display: none;
+}
+
+.panel-2 {
+	background-color: blue;
+}
+
+#camera-box {
+	width: 70%;
+	height: 100%;
+	background-color: white;
+}
+
+#info-box {
+	width: 30%;
+	height: 100%;
+	background-color: green;
+}
+
+#photo {
+	display: block;
+	height: 30%;
+	background-color: orange;
+	margin-bottom: 3%;
+}
+
+#nut-info {
+	display: block;
+	height: 60%;
+	background-color: red;
+	padding-left: 15px;
+}
+
+
+.centered {
+	display: block;
+	/*text-align: center;*/
+	margin: auto 0;
+}
+
+.large-text {
+	margin-left: 5%;
+	z-index: 10;
+	color: white;
+}
+
+#title {
+	font-family: 'Lobster', cursive;
+	font-size: 12em;
+	margin-bottom: 5%;
+}
+
+#subtext {
+	font-family: 'Roboto', sans-serif;
+	margin-left: 5%;
+}
