@@ -20,7 +20,6 @@ user = False
 @app.route('/')
 def main():
     return render_template("video.html")
-
 @app.route('/sendStaticImage',  methods=["POST"])
 def sendStaticImage():
     print('recieved image')
