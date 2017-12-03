@@ -22,7 +22,7 @@ def sendStaticImage():
     # file = request.args.get('file')
     # starter = file.find(',')
     # image_data = file[starter+1:]
-    print(image64)
+    # print(image64)
     image_data = bytes(image64, encoding="ascii")
 
     with open('Stream.jpg', 'wb') as fh:
@@ -31,7 +31,7 @@ def sendStaticImage():
 
     mo = data.classifier.model('Stream.jpg')
     print(mo)
-   
+
 
     return "test"
 

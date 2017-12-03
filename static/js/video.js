@@ -6,7 +6,7 @@ function main() {
   let canvas = document.getElementById('canvas')
   // let image = document.getElementById('image')
   let started = false
-  let sendRate = 7 // send rate per second
+  let sendRate = 3 // send rate per second
 
   let constraints = {
     audio: false,
@@ -37,7 +37,7 @@ function main() {
     //   }
     // )
     $.post("/sendStaticImage", {
-    image : data       
+    image : data
   }).done(function(response) {
     // alert("Server returned: " + response);
   }).fail(function() {
@@ -53,7 +53,7 @@ function main() {
       console.log(data)
 
        $.post("/sendStaticImage", {
-    image : data       
+    image : data
   }).done(function(response) {
     // alert("Server returned: " + response);
   }).fail(function() {
