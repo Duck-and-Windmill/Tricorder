@@ -45,20 +45,23 @@ html, body {
 }
 
 .panel-2 {
-
+	color: white;
 }
 
 #camera-box {
-	width: 60%;
+	width: 65%;
 	height: 100%;
 	background-color: white;
 }
 
 #but-box {
 	display: block;
+	padding: 10px 0 3px 15px;
+	background-color: rgba(255,255,255,0.6);
+	border-radius: 5px;
 	width: 20%;
-	bottom: 0;
-	left: 25%;
+	bottom: 1%;
+	left: 15%;
 	z-index: 15;
 	position: absolute;
 }
@@ -75,27 +78,32 @@ html, body {
 }
 
 #info-box {
-
-	max-width: 50%;
+	background-color: orange;
+	width: 35%;
 	height: 100%;
 }
 
 #info {
 	display: block;
-	height: 10%;
-	border: 1px solid black;
+	height: 8%;
+	width: 100%;
+	padding-left: 5px;
+	margin-bottom: 10px;
 }
 
 #photo {
 	display: block;
 	height: 30%;
-	border: 1px solid black;
+	width: 100%;
 }
 
 #nut-info {
+	color: white;
 	display: block;
 	height: 60%;
-	border: 1px solid red;
+	width: 100%;
+	padding-left: 5px;
+	border-top:2px dashed white;
 }
 
 .panel-3 {
@@ -106,7 +114,6 @@ html, body {
 	height: 100%;
 	width: 40%;
 	margin: auto;
-	background-color: purple;
 }
 
 #cal-count {

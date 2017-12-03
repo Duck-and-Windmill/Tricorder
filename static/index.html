@@ -17,14 +17,14 @@
 <body>
 	<div class="container-fluid main panel-1">
 		<article class="large-text centered">
-			<h1 id="title"> Food.c </h1>
-			<h3 id="subtext"> A scanning tool to <br> stop <span style="font-weight: bold; color: rgb(220,50,0); font-size: 1.5em">killing</span> your <span style="font-size: 1.5em;font-weight: bold; color: rgb(220,50,0)">die-t</span>. </h3>
+			<h1 id="title"> Food.c </h1> <!-- rgb(220,50,0) -->
+			<h3 id="subtext"> A scanning tool to <br> stop <span style="font-weight: bold; color: orange; font-size: 1.5em">killing</span> your <span style="font-size: 1.5em;font-weight: bold; color: orange">die-t</span>. </h3>
 		</article>
 	</div>
 
 	<div class="container-fluid main panel-2" style="display: none">
 		<div id="camera-box">
- 			<video id="video" style="width: 100%; height: 100%; margin:0"></video>
+ 			<video id="video" style="width: 100%; height: 100%; margin:0;float:left;"></video>
 			<div id="but-box">
 				<input type="text" id="name-input" style="display: none">
 				<a href="#" class="cam-but" id="take-pic">
@@ -36,9 +36,9 @@
 			</div>
 		</div>
 		<div id="info-box">
-			<div id="info"></div>
+			<div id="info"><h4 id="info-text" style="display: block;height:50%; padding-top: 4%">Hi! Register or Verify your profile below.</h4></div>
 			<article id="nut-info">
-				<h1 style="display: block">Nutritional Info</h1>
+				<h1 id="item" style="display: block"></h1>
 				<p id="facts">
 					
 				</p>
