@@ -18,6 +18,7 @@ firebase_admin.initialize_app(cred, {
 ref = db.reference('/hosts')
 hosts = ref.get()
 
+
 def get_nutrition_data(image_class):
 	url = "https://api.nal.usda.gov/ndb/search/?format=json&q=" + image_class + "&sort=n&max=1&offset=0&api_key=FLKBoKOh7C1apAA4bPL0jH4GAW6f2wS9Lw0a2iFu" 
 	r = requests.get(url).json()
