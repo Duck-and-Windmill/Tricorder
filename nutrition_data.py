@@ -54,4 +54,3 @@ def get_nutrition_data(image_class):
 	return nutrition_facts
 
 print(get_nutrition_data("beef"))
-

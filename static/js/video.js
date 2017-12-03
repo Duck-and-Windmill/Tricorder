@@ -2,6 +2,8 @@ function main() {
   let video = document.getElementById('video')
   let canvas = document.getElementById('canvas')
   let button = document.getElementById('button')
+  let registerFaceButton = document.getElementById('register-face')
+
   let started = false
   let sendRate = 8 // interval
 
@@ -26,30 +28,12 @@ function main() {
     canvas.height = height
 
     button.addEventListener('click', () => {
-      takePicture(video, canvas)
+      takeAndSendPicture(video, canvas, '/send-static-image')
     })
 
-    let data = takePicture(video, canvas)
-
-    $.post('/sendStaticImage', {
-      image : data
-    }).done((response) => {
-      // alert('Server returned: ' + response);
-    }).fail(() => {
-      console.log('failed to return results');
+    registerFaceButton.addEventListener('click', () => {
+      takeAndSendPicture(video, canvas, '/register-face', 'Michael')
     })
-
-    window.setInterval(() => {
-      let data = takePicture(video, canvas)
-
-      $.post('/send_static_image', {
-        image : data
-      }).done((response) => {
-        console.log('returned: '+response.data)
-      }).fail(() => {
-        console.log('failed to return results')
-      })
-    }, sendRate * 1000)
   })
 
   navigator.mediaDevices.getUserMedia(constraints)
@@ -59,7 +43,27 @@ function main() {
   })
 }
 
+function takeAndSendPicture(video, canvas, url, name) {
+  let data = { image: takePicture(video, canvas) }
+  if (name) {
+    data.name = name
+  }
+  sendPicture(data, url)
+}
+
+function sendPicture(data, url) {
+  console.log('data sent to: '+url)
+
+  $.post(url, data).done((response) => {
+    console.log('response: '+response)
+  }).fail(() => {
+    console.log('failed to return results');
+  })
+}
+
 function takePicture(video, canvas) {
+  console.log('picture taken!')
+
   let context = canvas.getContext('2d')
   context.drawImage(video, 0, 0, canvas.width, canvas.height)
   let data = canvas.toDataURL('image/jpeg')
