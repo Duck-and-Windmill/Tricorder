@@ -64,8 +64,11 @@ def register_face():
 @app.route('/check-face', methods=['POST'])
 def check_face():
     save_image(request.form['image'], 'face.jpg')
-    print(kairos_face.recognize_face(file='face.jpg', gallery_name='hackathon'))
-    return 'finished'
+    response = kairos_face.recognize_face(file='face.jpg', gallery_name='hackathon')
+    print(response)
+    match = response['images'][0]['candidates'][0]
+    print(match)
+    return match['subject_id']
 
 def save_image(raw_data, name):
     image64 = raw_data.split(',')[1]

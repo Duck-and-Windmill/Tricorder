@@ -4,6 +4,8 @@ function main() {
   let button = document.getElementById('button')
   let registerFaceButton = document.getElementById('register-face')
   let checkFaceButton = document.getElementById('check-face')
+  let info = document.getElementById('info')
+  let nameInput = document.getElementById('name-input')
 
   let started = false
   let sendRate = 8 // interval
@@ -33,11 +35,13 @@ function main() {
     })
 
     registerFaceButton.addEventListener('click', () => {
-      takeAndSendPicture(video, canvas, '/register-face', 'Michael')
+      takeAndSendPicture(video, canvas, '/register-face', nameInput.value || 'Default')
     })
 
     checkFaceButton.addEventListener('click', () => {
-      takeAndSendPicture(video, canvas, '/check-face', null)
+      takeAndSendPicture(video, canvas, '/check-face', (response) => {
+        info.innerHTML = response
+      })
     })
   })
 
