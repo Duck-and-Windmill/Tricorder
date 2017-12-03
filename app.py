@@ -50,8 +50,7 @@ def sendStaticImage():
 
     # if not user:
         # faces = kairos_face.recognize_face(file='stream.jpg', gallery_name='hackathon')
-    print(classified)
-    print(faces)
+    # print(faces)
 
     return 'finished'
 
@@ -59,9 +58,14 @@ def sendStaticImage():
 @app.route('/register-face', methods=['POST'])
 def register_face():
     save_image(request.form['image'], 'face.jpg')
-    return kairos_face.enroll_face(file='face.jpg', subject_id=request.form['name'], gallery_name='hackathon')
+    print(kairos_face.enroll_face(file='face.jpg', subject_id=request.form['name'], gallery_name='hackathon'))
+    return 'finished'
 
-    # return 'finished'
+@app.route('/check-face', methods=['POST'])
+def check_face():
+    save_image(request.form['image'], 'face.jpg')
+    print(kairos_face.recognize_face(file='face.jpg', gallery_name='hackathon'))
+    return 'finished'
 
 def save_image(raw_data, name):
     image64 = raw_data.split(',')[1]

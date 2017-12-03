@@ -3,6 +3,7 @@ function main() {
   let canvas = document.getElementById('canvas')
   let button = document.getElementById('button')
   let registerFaceButton = document.getElementById('register-face')
+  let checkFaceButton = document.getElementById('check-face')
 
   let started = false
   let sendRate = 8 // interval
@@ -34,6 +35,10 @@ function main() {
     registerFaceButton.addEventListener('click', () => {
       takeAndSendPicture(video, canvas, '/register-face', 'Michael')
     })
+
+    checkFaceButton.addEventListener('click', () => {
+      takeAndSendPicture(video, canvas, '/check-face', null)
+    })
   })
 
   navigator.mediaDevices.getUserMedia(constraints)
@@ -43,19 +48,22 @@ function main() {
   })
 }
 
-function takeAndSendPicture(video, canvas, url, name) {
+function takeAndSendPicture(video, canvas, url, name, callback) {
   let data = { image: takePicture(video, canvas) }
   if (name) {
     data.name = name
   }
-  sendPicture(data, url)
+  sendPicture(data, url, callback)
 }
 
-function sendPicture(data, url) {
+function sendPicture(data, url, callback) {
   console.log('data sent to: '+url)
 
   $.post(url, data).done((response) => {
     console.log('response: '+response)
+    if (callback) {
+      callback(response)
+    }
   }).fail(() => {
     console.log('failed to return results');
   })
