@@ -45,33 +45,86 @@ html, body {
 }
 
 .panel-2 {
-	background-color: blue;
+
 }
 
 #camera-box {
-	width: 70%;
+	width: 60%;
 	height: 100%;
 	background-color: white;
 }
 
-#info-box {
+#but-box {
+	display: block;
+	width: 20%;
+	bottom: 0;
+	left: 25%;
+	z-index: 15;
+	position: absolute;
+}
+
+.cam-but {
+	display: inline-block;
 	width: 30%;
+	cursor: pointer;
+}
+
+.cam-but img{
+	width: 100%;
+	height: auto;
+}
+
+#info-box {
+
+	max-width: 50%;
 	height: 100%;
-	background-color: green;
+}
+
+#info {
+	display: block;
+	height: 10%;
+	border: 1px solid black;
 }
 
 #photo {
 	display: block;
 	height: 30%;
-	background-color: orange;
-	margin-bottom: 3%;
+	border: 1px solid black;
 }
 
 #nut-info {
 	display: block;
 	height: 60%;
-	background-color: red;
-	padding-left: 15px;
+	border: 1px solid red;
+}
+
+.panel-3 {
+	background-color: maroon;
+}
+
+#person-info {
+	height: 100%;
+	width: 40%;
+	margin: auto;
+	background-color: purple;
+}
+
+#cal-count {
+	background-color: blue;
+	height: 30%;
+	width: 100%;
+}
+
+#history {
+	background-color: grey;
+	height: 60%;
+	width: 100%;
+}
+
+#graph {
+	width: 60%;
+	height: 100%;
+	background-color: teal;
 }
 
 

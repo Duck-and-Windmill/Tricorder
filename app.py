@@ -21,7 +21,7 @@ user = False
 @app.route('/')
 def main():
     print(kairos_face.get_gallery("hackathon"))
-    return render_template("video.html")
+    return render_template("index.html")
 
 @app.route('/send-static-image',  methods=["POST"])
 def sendStaticImage():

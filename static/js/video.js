@@ -32,7 +32,7 @@ function main() {
 
     button.addEventListener('click', () => {
       takeAndSendPicture(video, canvas, '/send-static-image', null, (response) => {
-        info.innerHTML = 'What a nice ' + response.replace('_', ' ') + '!'
+        facts.innerHTML = '' + response.replace('_', ' ') + '!'
       })
     })
 
@@ -46,13 +46,14 @@ function main() {
         console.log(response)
       })
     })
-
+/*
     window.setInterval(() => {
       takeAndSendPicture(video, canvas, '/send-static-image', null, (response) => {
         info.innerHTML = 'What a nice ' + response.replace('_', ' ') + '!'
       })
-    }, sendRate * 1000)
+    }, sendRate * 1000)*/
   })
+
 
   navigator.mediaDevices.getUserMedia(constraints)
   .then((stream) => {
