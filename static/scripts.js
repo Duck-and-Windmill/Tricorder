@@ -4,35 +4,40 @@ function main() {
 	let nameInput = document.getElementById('nameInput');
 
 
+	$('#nameInput').keydown(function(event) {
+        if (event.keyCode == 13) {
+            $('.panel-2').slideToggle();
+			$('.panel-1').slideToggle();
+			info.innerHTML = 'Welcome, '+ nameInput.value + '!';
+			$('#2-t').toggleClass('active');
+			$('#1-t').toggleClass('active');
+         }
+    });
+
 	$('#next').click(function() {
-		panel = (panel + 1) % 3
+		panel = (panel + 1) % 2
 		if (panel == 1) {
 			$('.panel-1').slideToggle();
-			$('.panel-3').slideToggle();
+			$('.panel-2').slideToggle();
 			$('#1-t').toggleClass('active');
-			$('#3-t').toggleClass('active');
-		} else if (panel == 2) {
+			$('#2-t').toggleClass('active');
+		} else if (panel == 0) {
 			$('.panel-2').slideToggle();
 			$('.panel-1').slideToggle();
 			info.innerHTML = 'Welcome, '+ nameInput.value + '!'
 			$('#2-t').toggleClass('active');
 			$('#1-t').toggleClass('active');
-		} else {
-			$('.panel-3').slideToggle();
-			$('.panel-2').slideToggle();
-			$('#3-t').toggleClass('active');
-			$('#2-t').toggleClass('active');
-		}
+		} 
 	});
 
 	$('#prev').click(function() {
-		panel = (panel - 1) % 3
+		panel = (panel - 1) % 2
 		if (panel == 1) {
 			$('.panel-1').slideToggle();
 			$('.panel-2').slideToggle();
 			$('#1-t').toggleClass('active');
 			$('#2-t').toggleClass('active');
-		} else if (panel == 2) {
+		} else if (panel == 0) {
 			$('.panel-2').slideToggle();
 			$('.panel-3').slideToggle();
 			$('#2-t').toggleClass('active');

@@ -40,24 +40,32 @@ function main() {
 
     button.addEventListener('click', () => {
       takeAndSendPicture(video, canvas, '/send-static-image', null, (response) => {
+        item.innerHTML = '' + JSON.parse(response).food.replace('_', ' ');
+        facts.innerHTML = '';
         let nutrients = JSON.parse(response).nutrition
         let table = document.createElement('table')
+
+        var keys = ['Energy', 'Carbohydrate', 'Sugars', 'Protein', 'Total lipid (fat)'];
 
         for (let key in nutrients) {
           let nutrient = key.split(',')[0]
           let amt = nutrients[key]
           // console.log(nutrient, amt)
 
-          let tr = document.createElement('tr')
-          tr.innerHTML = '<td>' + nutrient + '</td>'
-          tr.innerHTML += '<td>' + amt + '</td>'
 
-          table.appendChild(tr)
+          if (keys.indexOf(nutrient) > -1) {
+
+            let tr = document.createElement('tr')
+            tr.innerHTML = '<td>' + nutrient + '</td>'
+            tr.innerHTML += '<td style=\"padding-left:15px\">' + amt + '</td>'
+
+            table.appendChild(tr)
+           }
         }
 
         // console.log(table)
         facts.appendChild(table)
-        item.innerHTML = '' + response.replace('_', ' ');
+          //item.innerHTML = '' + response.replace('_', ' ');
         // item.innerHTML = '' + response.replace('_', ' ');
         pastClasses.push(response);
       })

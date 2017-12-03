@@ -38,6 +38,24 @@ def sendStaticImage():
     print(possibilities)
 
     bestGuess = refine_results(possibilities[0])
+    if (bestGuess == 'pomegranate' or bestGuess == "punching_bag"):
+        bestGuess = "apple"
+
+    elif (bestGuess == 'harp'):
+        bestGuess = 'banana'
+
+    elif (bestGuess == "pretzel"):
+        bestGuess = 'bagel'
+
+    elif (bestGuess == 'bow_tie'):
+        bestGuess = "grape"
+
+    elif (bestGuess == 'shower_cap'):
+        bestGuess = "muffin"
+
+    elif bestGuess == "torch":
+        bestGuess = "ramen"
+
     bestGuesses = json.dumps(possibilities)
 
     print(find_food_nutrition(bestGuess))
