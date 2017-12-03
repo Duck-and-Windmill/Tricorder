@@ -19,8 +19,10 @@ user = False
 
 @app.route('/')
 def main():
+    print(kairos_face.get_gallery("hackathon"))
     return render_template("video.html")
-@app.route('/sendStaticImage',  methods=["POST"])
+
+@app.route('/send-static-image',  methods=["POST"])
 def sendStaticImage():
     print('recieved image')
     save_image(request.form['image'], 'stream.jpg')
@@ -30,25 +32,24 @@ def sendStaticImage():
 
     print(pred)
 
-    possibilities = [item for (itemId, item, confidence) in pred[0] ]
+    possibilities = [item for (item_id, item, confidence) in pred[0]]
     print(possibilities)
 
     bestGuess = possibilities[0]
     bestGuesses = json.dumps(possibilities)
 
-    #look up facts
-    print('Looking up Nutrition facts for: ', bestGuess)
-    Nuts = BiggestNut.get_nutrition_data(bestGuess)
-    # Nut=json.dumps(Nuts)
-    print(Nuts)
-    results=[possibilities, Nuts]
-    resultsString=json.dumps(results)
-    return resultsString
-    # classifier.model("test.png")
+    # #look up facts
+    # print('Looking up Nutrition facts for: ', bestGuess)
+    # Nuts = BiggestNut.get_nutrition_data(bestGuess)
+    # # Nut=json.dumps(Nuts)
+    # print(Nuts)
+    # results=[possibilities, Nuts]
+    # resultsString=json.dumps(results)
+    # return resultsString
+    # # classifier.model("test.png")
 
     # if not user:
         # faces = kairos_face.recognize_face(file='stream.jpg', gallery_name='hackathon')
-
     print(classified)
     print(faces)
 
@@ -58,12 +59,13 @@ def sendStaticImage():
 @app.route('/register-face', methods=['POST'])
 def register_face():
     save_image(request.form['image'], 'face.jpg')
-    kairos_face.enroll_face(file=image_file, subject_id=request.form['name'], gallery_name='hackathon')
+    return kairos_face.enroll_face(file='face.jpg', subject_id=request.form['name'], gallery_name='hackathon')
 
+    # return 'finished'
 
 def save_image(raw_data, name):
     image64 = raw_data.split(',')[1]
-    image_data = bytes(image64, encoding="ascii")
+    image_data = bytes(image64, encoding='ascii')
 
     with open(name, 'wb') as f:
         f.write(base64.decodebytes(image_data))

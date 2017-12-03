@@ -30,7 +30,7 @@ def get_nutrition_data(image_class):
 		nutrition_data = requests.get(nutrition_url)
 
 		return json.dumps(nutrition_data.json())
-		
+
 	except:
 		return 'No Results'
 
