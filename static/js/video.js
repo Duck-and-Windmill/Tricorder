@@ -7,7 +7,7 @@ function main() {
   let info = document.getElementById('info-text');
   let facts = document.getElementById('facts');
   let item = document.getElementById('item');
-  let nameInput = document.getElementById('name-input');
+  let nameInput = document.getElementById('namer-input');
 
   let started = false;
   let sendRate = 7;// interval
@@ -15,6 +15,12 @@ function main() {
   let constraints = {
     audio: false,
     video: true
+  }
+
+  var pastClasses = [];
+
+  function getPC() {
+      return pastClasses;
   }
 
   video.addEventListener('playing', (event) => {
@@ -52,6 +58,8 @@ function main() {
         // console.log(table)
         facts.appendChild(table)
         // item.innerHTML = '' + response.replace('_', ' ');
+        // item.innerHTML = '' + response.replace('_', ' ');
+        pastClasses.push(response);
       })
     })
 
@@ -61,7 +69,7 @@ function main() {
 
     checkFaceButton.addEventListener('click', () => {
       takeAndSendPicture(video, canvas, '/check-face', null, (response) => {
-        info.innerHTML = 'Hello, '+ response + '!'
+        info.innerHTML = 'Welcome back, '+ response + '!'
         console.log(response)
       })
     })
@@ -81,8 +89,15 @@ function main() {
   })
 }
 
+var numPic = -1;
+
 function takeAndSendPicture(video, canvas, url, name, callback) {
   let data = { image: takePicture(video, canvas) }
+
+  numPic = (numPic + 1) % 3;
+  var imgid = "show-" + numPic;
+  $(('#' + imgid)).attr("src", data['image'])
+
   if (name) {
     data.name = name
   }

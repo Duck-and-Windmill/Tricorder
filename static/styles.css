@@ -23,6 +23,12 @@ html, body {
 	height: 100%;
 }
 
+#namer {
+	margin-top: 20%;
+	margin-left: 12%;
+	z-index: 20;
+}
+
 .panel-1 {
 	align-content: center;
 	background: url('salad.jpg') no-repeat;
@@ -85,16 +91,34 @@ html, body {
 
 #info {
 	display: block;
-	height: 8%;
+	height: 10%;
 	width: 100%;
 	padding-left: 5px;
 	margin-bottom: 10px;
 }
 
 #photo {
-	display: block;
-	height: 30%;
+	z-index: 15;
+	display: flex;
+	height: 28%;
 	width: 100%;
+	padding-top: 10px;
+	align-items: center;
+	justify-content: center;
+}
+
+.showcase {
+	border: 2px solid white;
+	width: 30%;
+	flex-wrap: nowrap;
+	flex-grow: 1;
+	display: inline-block;
+	margin: auto;
+}
+
+.showcase img {
+	width: 100%;
+	height: auto;
 }
 
 #nut-info {
