@@ -7,7 +7,7 @@ function main() {
   let info = document.getElementById('info-text');
   let facts = document.getElementById('facts');
   let item = document.getElementById('item');
-  let nameInput = document.getElementById('namer-input');
+  let nameInput = document.getElementById('nameInput');
 
   let started = false;
   let sendRate = 7;// interval
@@ -72,7 +72,7 @@ function main() {
     })
 
     registerFaceButton.addEventListener('click', () => {
-      takeAndSendPicture(video, canvas, '/register-face', nameInput.value || 'Default')
+      takeAndSendPicture(video, canvas, '/register-face', nameInput.value)
     })
 
     checkFaceButton.addEventListener('click', () => {

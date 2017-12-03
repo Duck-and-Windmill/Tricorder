@@ -47,10 +47,10 @@ def sendStaticImage():
     elif (bestGuess == "pretzel"):
         bestGuess = 'bagel'
 
-    elif (bestGuess == 'bow_tie'):
+    elif (bestGuess == 'bow_tie' or bestGuess=='hair_spray' or bestGuess=="maraca"):
         bestGuess = "grape"
 
-    elif (bestGuess == 'shower_cap'):
+    elif (bestGuess == 'shower_cap' or bestGuess == "king_crab"):
         bestGuess = "muffin"
 
     elif bestGuess == "torch":
@@ -101,4 +101,5 @@ def save_image(raw_data, name):
 
 
 if __name__ == "__main__":
+
     app.run()
