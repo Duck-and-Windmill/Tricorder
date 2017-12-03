@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "eduroam-cbbfb",
+  "private_key_id": "bea8ac60c294d9d8a0ef1b362ab3a5c80142ed53",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCr1Br6byQiD8s6\n97enRqB8MO79+G9Ho+j+/6/xFH8i5M54cL3y+FpOkBVSZmcrmQ6Sf2+aFeO/33J7\nAW33Mj+CSCLyqw324OdLnF6cru+lcECpV9CwVXTu/7PkpkP8/JOS8UHL1pXYezCz\nBnQxI69IeSM81/lk1C364UeOfkbacufqTV38f/3dmz0ChQdIaX8FCfDH9dz+YfnI\nk8UTRxVE2t12R2qmwWfLdfNYsane1rXTHSMsbnmJ7wgB0Vl6zZSUuQ5GDlYPkyHJ\nS5HXk/gWMo5pcbWJYrRoc8U2uKrDNZSIrwBtaBaREfyX7iAu/oT5SDWFffzVg0Du\nLvU33/vJAgMBAAECggEAAb3f9IgaEikd0sAX21+CzFXePkwwq8W63JOj6WosEolf\nzGaI9MSh406Tk/O+YCzbfttBOtfo9WHWJVTYFAITroYW3WXXE0va6SNkuoRz1ALF\nk2t0wPmeYOo0aedp8TXWmxrMVqNOS1T1Ix0E7xb6m/eNk2LPDNlK8NJfj5xMRI+S\nwTzK8Wmxfd2pG09uBdnj03887yFDchQJtOg21a+ynpyoRR9uM0Lo4SwOK0Y3upRz\nEl2Jt9QZJRlYwyBNTW+Q8dnuF6Jay7VXsrZTfw9epBEG/X3Xbud3Ac4XGA0wq7sg\nHp0EHzo/kS+tzIEdgaql49chfLExP9IxseMrP/q4ZwKBgQDbaRxpNESv7StbcLjW\nov0VXHyWurZvmHCOp6HpklxIfU+C+ErBJ6PJdHnhAT8Ab8JVI/uQcqc82vEAYTI9\nc/QO8sQe7Wya+yEfCHR6CNSFUSM6CvMN2TMV3hb5JCNmnEPj7q1ExBPD5uIwOcOq\nAZS3ZrPtzTVdgX9F8h+Wi3K9TwKBgQDIe6mBv2SJfopnsFffiJfQXTAehlTTHopq\nVzJQOzrqaRl78yN/kld8Kicj020Ixl+yffRWWfgwZDIRxeaB05G8RWatxTXaz1WH\nkYvTy6OzkyDhaBQDnpNPSChFmgHucCpbpsmIZANb8FgwzRue6vRvx0of8Ob0QhRG\nfD9VcdLfZwKBgD9GbN8aJ8TkjOBt/aBImNwUNAn0BrDgMXWyeks13k85dDi9CjHy\nEJYEdTGiflzN3ilXmzDpH7m5Gk+VuDtouTWmZVDV/8AiNEcS1SRsb32TDKmshrOz\ns7vWtKFc/qiU4C9Xobh3I4wXhZuKzRa2JgFOKQ2nZIB23BF75ggwZwKZAoGADe/q\n3MY9awGNBaBQu413YFjaG4UjKHobDUF6kfFMKzebOe6xLREzW8Jibi8oiU+hH3t6\nHPasNlEA2hNz7tqSaxA4DySCle+L9py7p8GkY7t6sbDWk1nWy9AsXIpUUAskJrL1\nl7G8Ogv/VYUswmN7Ero8APRyWdCuMCg7DumWy0kCgYA77O6Ezm+hj3UgZJuTTzPt\nIz8mKwpQhJiMD2zOHAiZhdx5I2RxxVNxNCJVXll/1FXTlCQ/WdbUk+z9BhW8uLo0\neQXeoID52LlIf1h2VwxEF5CZ5NSsIOWpyy+5dHP1S8SheVHQJLrW8RASNwvKcLtL\nHTxAGMu0TMwV9tsf76SLAw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "eduroam-cbbfb@appspot.gserviceaccount.com",
+  "client_id": "114424428651683744063",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/eduroam-cbbfb%40appspot.gserviceaccount.com"
+}
