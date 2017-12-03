@@ -43,7 +43,7 @@ def get_nutrition_data(image_class):
 	nutrition_facts = {}
 	nutrients = nutrition_data["foods"][0]["food"]["nutrients"]
 
-	nutrition_facts["serve_size"] = str(nutrients[0]["measures"][0]["qty"]) + nutrients[0]["measures"][0]["eunit"]
+	nutrition_facts["serve_size"] = str(nutrients[0]["measures"][0]["qty"]) + " ounces"
 	nutrition_facts["kcal"] = str(nutrients[0]["measures"][0]["value"]) + " calories"
 	nutrition_facts["fat"] = str(nutrients[2]["measures"][0]["value"]) + " grams"
 	nutrition_facts["carbs"] = str(nutrients[3]["measures"][0]["value"]) + " grams"
@@ -53,5 +53,5 @@ def get_nutrition_data(image_class):
 
 	return nutrition_facts
 
-print(get_nutrition_data("orange"))
+print(get_nutrition_data("beef"))
 
