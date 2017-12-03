@@ -1,12 +1,9 @@
-'use strict'
-
 function main() {
   let video = document.getElementById('video')
-  // let canvas = document.createElement('canvas')
   let canvas = document.getElementById('canvas')
-  // let image = document.getElementById('image')
+  let button = document.getElementById('button')
   let started = false
-  let sendRate = 3 // send rate per second
+  let sendRate = 8 // interval
 
   let constraints = {
     audio: false,
@@ -14,8 +11,9 @@ function main() {
   }
 
   video.addEventListener('playing', (event) => {
-    if (started) return
-
+    if (started) {
+      return
+    }
     started = true
 
     let width = video.videoWidth
@@ -27,38 +25,30 @@ function main() {
     canvas.width = width
     canvas.height = height
 
-    let context = canvas.getContext('2d')
-    context.drawImage(video, 0, 0, width, height)
-    let data = canvas.toDataURL('image/jpeg')
+    button.addEventListener('click', () => {
+      takePicture(video, canvas)
+    })
 
-    // console.log(data)
-    // post('/sendStaticImage', 'image='+data).then(() => {
-    //     console.log('done')
-    //   }
-    // )
-    $.post("/sendStaticImage", {
-    image : data       
-  }).done(function(response) {
-    // alert("Server returned: " + response);
-  }).fail(function() {
-    console.log("failed to return results");
-  });
+    let data = takePicture(video, canvas)
+
+    $.post('/sendStaticImage', {
+      image : data
+    }).done((response) => {
+      // alert('Server returned: ' + response);
+    }).fail(() => {
+      console.log('failed to return results');
+    })
 
     window.setInterval(() => {
-      let context = canvas.getContext('2d')
-      context.drawImage(video, 0, 0, width, height)
-      let data = canvas.toDataURL('image/jpeg')
-      // image.src = data
+      let data = takePicture(video, canvas)
 
-      console.log(data)
-
-       $.post("/sendStaticImage", {
-    image : data       
-  }).done(function(response) {
-    // alert("Server returned: " + response);
-  }).fail(function() {
-    console.log("failed to return results");
-  });
+      $.post('/send_static_image', {
+        image : data
+      }).done((response) => {
+        console.log('returned: '+response.data)
+      }).fail(() => {
+        console.log('failed to return results')
+      })
     }, sendRate * 1000)
   })
 
@@ -69,5 +59,12 @@ function main() {
   })
 }
 
+function takePicture(video, canvas) {
+  let context = canvas.getContext('2d')
+  context.drawImage(video, 0, 0, canvas.width, canvas.height)
+  let data = canvas.toDataURL('image/jpeg')
+
+  return data
+}
 
 window.onload = main

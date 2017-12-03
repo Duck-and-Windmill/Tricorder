@@ -1,4 +1,4 @@
-import numpy as np 
+import numpy as np
 import requests
 import json
 from bs4 import BeautifulSoup
@@ -21,6 +21,7 @@ hosts = ref.get()
 
 
 def get_nutrition_data(image_class):
+<<<<<<< HEAD
 	url = "https://api.nal.usda.gov/ndb/search/?format=json&q=" + image_class + "&sort=n&max=25&offset=0&api_key=FLKBoKOh7C1apAA4bPL0jH4GAW6f2wS9Lw0a2iFu"
 	r = requests.get(url).json()
 
@@ -54,3 +55,20 @@ def get_nutrition_data(image_class):
 	return nutrition_facts
 
 print(get_nutrition_data("orange"))
+=======
+	url = "https://api.nal.usda.gov/ndb/search/?format=json&q=" + image_class + "&sort=n&max=1&offset=0&api_key=FLKBoKOh7C1apAA4bPL0jH4GAW6f2wS9Lw0a2iFu"
+	r = requests.get(url).json()
+	try:
+		ndbno = r["list"]["item"][0]["ndbno"]
+		print(ndbno)
+
+		nutrition_url = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=" + ndbno + "&type=f&format=json&api_key=FLKBoKOh7C1apAA4bPL0jH4GAW6f2wS9Lw0a2iFu"
+		nutrition_data = requests.get(nutrition_url)
+
+		return json.dumps(nutrition_data.json())
+		
+	except:
+		return 'No Results'
+
+# print(get_nutrition_data("pizza"))
+>>>>>>> f2b1527a7e3c7e1f5991dd9aaf43dc48763927bf
