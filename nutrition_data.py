@@ -30,4 +30,4 @@ def get_nutrition_data(image_class):
 
 	return json.dumps(nutrition_data.json())
 
-print(get_nutrition_data("pizza"))
+# print(get_nutrition_data("pizza"))

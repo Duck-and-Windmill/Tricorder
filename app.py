@@ -5,7 +5,7 @@ import base64
 import codecs
 import data.classifier
 import numpy as np
-
+import nutrition_data as BiggestNut
 template_dir = os.path.abspath('static')
 app = Flask(__name__, template_folder=template_dir)
 
@@ -35,10 +35,15 @@ def sendStaticImage():
     print(pred)
     possibilities = [item for (itemId, item, confidence) in pred[0] ]
     print(possibilities)
+    bestGuesses=json.dumps(possibilities)
+    bestGuess=bestGuesses[0]
 
     #look up facts
-    
-    return json.dumps(possibilities)
+    print('Looking up Nutrition facts')
+    Nuts=BiggestNut.get_nutrition_data(bestGuess)
+    json.dumps(Nuts)
+
+    return 
 
     # classifier.model("test.png")
 
