@@ -8,7 +8,7 @@ function main() {
   let nameInput = document.getElementById('name-input')
 
   let started = false
-  let sendRate = 7 // interval
+  let sendRate = 100000 // interval
 
   let constraints = {
     audio: false,
