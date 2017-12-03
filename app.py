@@ -29,12 +29,6 @@ def sendStaticImage():
     print('recieved image')
     save_image(request.form['image'], 'stream.jpg')
 
-    # just for testing!
-    return json.dumps({
-        'food': 'orange',
-        'nutrition': find_food_nutrition('orange')
-    })
-
     model = data.classifier.model()
     pred = model.predict_class('stream.jpg')
 

@@ -57,7 +57,7 @@ function main() {
 
         // console.log(table)
         facts.appendChild(table)
-        // item.innerHTML = '' + response.replace('_', ' ');
+        item.innerHTML = '' + response.replace('_', ' ');
         // item.innerHTML = '' + response.replace('_', ' ');
         pastClasses.push(response);
       })
