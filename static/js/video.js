@@ -44,7 +44,7 @@ function main() {
 
     checkFaceButton.addEventListener('click', () => {
       takeAndSendPicture(video, canvas, '/check-face', null, (response) => {
-        info.innerHTML = 'Hello,'+ response + '!'
+        info.innerHTML = 'Hello, '+ response + '!'
         console.log(response)
       })
     })
