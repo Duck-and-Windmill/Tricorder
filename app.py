@@ -29,6 +29,12 @@ def sendStaticImage():
     print('recieved image')
     save_image(request.form['image'], 'stream.jpg')
 
+    # just for testing!
+    return json.dumps({
+        'food': 'orange',
+        'nutrition': find_food_nutrition('orange')
+    })
+
     model = data.classifier.model()
     pred = model.predict_class('stream.jpg')
 
@@ -37,7 +43,7 @@ def sendStaticImage():
     possibilities = [item for (item_id, item, confidence) in pred[0]]
     print(possibilities)
 
-    bestGuess = possibilities[0]
+    bestGuess = refine_results(possibilities[0])
     bestGuesses = json.dumps(possibilities)
 
     print(find_food_nutrition(bestGuess))

@@ -34,7 +34,24 @@ function main() {
 
     button.addEventListener('click', () => {
       takeAndSendPicture(video, canvas, '/send-static-image', null, (response) => {
-        item.innerHTML = '' + response.replace('_', ' ');
+        let nutrients = JSON.parse(response).nutrition
+        let table = document.createElement('table')
+
+        for (let key in nutrients) {
+          let nutrient = key.split(',')[0]
+          let amt = nutrients[key]
+          // console.log(nutrient, amt)
+
+          let tr = document.createElement('tr')
+          tr.innerHTML = '<td>' + nutrient + '</td>'
+          tr.innerHTML += '<td>' + amt + '</td>'
+
+          table.appendChild(tr)
+        }
+
+        // console.log(table)
+        facts.appendChild(table)
+        // item.innerHTML = '' + response.replace('_', ' ');
       })
     })
 
@@ -48,7 +65,7 @@ function main() {
         console.log(response)
       })
     })
-/*
+    /*
     window.setInterval(() => {
       takeAndSendPicture(video, canvas, '/send-static-image', null, (response) => {
         info.innerHTML = 'What a nice ' + response.replace('_', ' ') + '!'
