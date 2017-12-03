@@ -35,16 +35,18 @@ def sendStaticImage():
     print(pred)
     possibilities = [item for (itemId, item, confidence) in pred[0] ]
     print(possibilities)
+    bestGuess=possibilities[0]
     bestGuesses=json.dumps(possibilities)
-    bestGuess=bestGuesses[0]
+    
 
     #look up facts
-    print('Looking up Nutrition facts')
+    print('Looking up Nutrition facts for: ',bestGuess)
     Nuts=BiggestNut.get_nutrition_data(bestGuess)
-    json.dumps(Nuts)
-
-    return 
-
+    # Nut=json.dumps(Nuts)
+    print(Nuts)
+    results=[possibilities, Nuts]
+    resultsString=json.dumps(results)
+    return resultsString
     # classifier.model("test.png")
 
 if __name__ == "__main__":
