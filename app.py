@@ -8,6 +8,7 @@ import kairos_face
 import credentials
 import numpy as np
 import nutrition_data as BiggestNut
+from nutrition import find_food_nutrition
 from refine import refine_results
 
 kairos_face.settings.app_id = credentials.app_id
@@ -39,7 +40,12 @@ def sendStaticImage():
     bestGuess = possibilities[0]
     bestGuesses = json.dumps(possibilities)
 
-    return refine_results(bestGuess)
+    print(find_food_nutrition(bestGuess))
+
+    return json.dumps({
+        'food': bestGuess,
+        'nutrition': find_food_nutrition(bestGuess)
+    })
     # #look up facts
     # print('Looking up Nutrition facts for: ', bestGuess)
     # Nuts = BiggestNut.get_nutrition_data(bestGuess)

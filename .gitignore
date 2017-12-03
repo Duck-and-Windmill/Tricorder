@@ -1,5 +1,8 @@
 .DS_Store
 __pycache__
 credentials.py
-*.jpg
+stream.jpg
+face.jpg
+test_imgs
 refine.py
+*.sql3
