@@ -13,7 +13,6 @@ app = Flask(__name__, template_folder=template_dir)
 def main():
     # return render_template("index.html")
     return render_template("video.html")
-
 @app.route('/sendStaticImage',  methods=["POST"])
 def sendStaticImage():
     # print(request)

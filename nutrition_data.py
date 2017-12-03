@@ -22,12 +22,16 @@ hosts = ref.get()
 def get_nutrition_data(image_class):
 	url = "https://api.nal.usda.gov/ndb/search/?format=json&q=" + image_class + "&sort=n&max=1&offset=0&api_key=FLKBoKOh7C1apAA4bPL0jH4GAW6f2wS9Lw0a2iFu" 
 	r = requests.get(url).json()
-	ndbno = r["list"]["item"][0]["ndbno"]
-	print(ndbno)
+	try:
+		ndbno = r["list"]["item"][0]["ndbno"]
+		print(ndbno)
 
-	nutrition_url = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=" + ndbno + "&type=f&format=json&api_key=FLKBoKOh7C1apAA4bPL0jH4GAW6f2wS9Lw0a2iFu"
-	nutrition_data = requests.get(nutrition_url)
+		nutrition_url = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=" + ndbno + "&type=f&format=json&api_key=FLKBoKOh7C1apAA4bPL0jH4GAW6f2wS9Lw0a2iFu"
+		nutrition_data = requests.get(nutrition_url)
 
-	return json.dumps(nutrition_data.json())
+		return json.dumps(nutrition_data.json())
+		
+	except:
+		return 'No Results'
 
 # print(get_nutrition_data("pizza"))
