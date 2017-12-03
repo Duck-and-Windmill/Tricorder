@@ -4,7 +4,7 @@ import sys
 import fuzzyset
 
 def find_food_nutrition(food_name):
-    return find_nutrition(find_food(food_name))
+    return find_nutrition(find_food(food_name)[0])
 
 def find_food(food):
     conn = sqlite3.connect('usda.sql3')
@@ -32,7 +32,7 @@ def find_food(food):
         # if food_name.startswith(food):
             # print(row[1])
 
-    # print(str(best_id) + " " + best_food)
+    print(str(best_id) + " " + best_food)
     return (best_id, best_food)
 
 def find_nutrition(food_id):
