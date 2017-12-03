@@ -9,7 +9,7 @@ class model():
 	def __init__(self):
 		self.model = data.vgg16.VGG16(include_top=True, weights='imagenet')
 
-	def predict_class(img_path)
+	def predict_class(self,img_path):
 		img = image.load_img(img_path, target_size=(224, 224))
 		x = image.img_to_array(img)
 		x = np.expand_dims(x, axis=0)

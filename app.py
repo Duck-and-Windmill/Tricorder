@@ -4,6 +4,7 @@ import os
 import base64
 import codecs
 import data.classifier
+import numpy as np
 
 template_dir = os.path.abspath('static')
 app = Flask(__name__, template_folder=template_dir)
@@ -29,11 +30,15 @@ def sendStaticImage():
     	fh.write(base64.decodebytes(image_data))
     fh.close
 
-    mo = data.classifier.model('Stream.jpg')
-    print(mo)
-   
+    mo = data.classifier.model()
+    pred = mo.predict_class('Stream.jpg')
+    print(pred)
+    possibilities = [item for (itemId, item, confidence) in pred[0] ]
+    print(possibilities)
 
-    return "test"
+    #look up facts
+    
+    return json.dumps(possibilities)
 
     # classifier.model("test.png")
 
