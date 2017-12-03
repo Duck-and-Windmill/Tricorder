@@ -38,6 +38,7 @@ def sendStaticImage():
     bestGuess = possibilities[0]
     bestGuesses = json.dumps(possibilities)
 
+    return bestGuess
     # #look up facts
     # print('Looking up Nutrition facts for: ', bestGuess)
     # Nuts = BiggestNut.get_nutrition_data(bestGuess)
@@ -48,11 +49,7 @@ def sendStaticImage():
     # return resultsString
     # # classifier.model("test.png")
 
-    # if not user:
-        # faces = kairos_face.recognize_face(file='stream.jpg', gallery_name='hackathon')
-    # print(faces)
-
-    return 'finished'
+    # return 'finished'
 
 
 @app.route('/register-face', methods=['POST'])

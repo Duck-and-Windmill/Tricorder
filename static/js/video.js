@@ -1,6 +1,6 @@
 function main() {
   let video = document.getElementById('video')
-  let canvas = document.getElementById('canvas')
+  let canvas = document.createElement('canvas')
   let button = document.getElementById('button')
   let registerFaceButton = document.getElementById('register-face')
   let checkFaceButton = document.getElementById('check-face')
@@ -8,7 +8,7 @@ function main() {
   let nameInput = document.getElementById('name-input')
 
   let started = false
-  let sendRate = 8 // interval
+  let sendRate = 7 // interval
 
   let constraints = {
     audio: false,
@@ -31,7 +31,9 @@ function main() {
     canvas.height = height
 
     button.addEventListener('click', () => {
-      takeAndSendPicture(video, canvas, '/send-static-image')
+      takeAndSendPicture(video, canvas, '/send-static-image', null, (response) => {
+        info.innerHTML = 'What a nice ' + response.replace('_', ' ') + '!'
+      })
     })
 
     registerFaceButton.addEventListener('click', () => {
@@ -39,10 +41,17 @@ function main() {
     })
 
     checkFaceButton.addEventListener('click', () => {
-      takeAndSendPicture(video, canvas, '/check-face', (response) => {
-        info.innerHTML = response
+      takeAndSendPicture(video, canvas, '/check-face', null, (response) => {
+        info.innerHTML = 'Hello '+ response + '!'
+        console.log(response)
       })
     })
+
+    window.setInterval(() => {
+      takeAndSendPicture(video, canvas, '/send-static-image', null, (response) => {
+        info.innerHTML = 'What a nice ' + response.replace('_', ' ') + '!'
+      })
+    }, sendRate * 1000)
   })
 
   navigator.mediaDevices.getUserMedia(constraints)
