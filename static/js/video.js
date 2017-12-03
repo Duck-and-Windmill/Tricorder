@@ -1,14 +1,16 @@
 function main() {
-  let video = document.getElementById('video')
-  let canvas = document.createElement('canvas')
-  let button = document.getElementById('button')
-  let registerFaceButton = document.getElementById('register-face')
-  let checkFaceButton = document.getElementById('check-face')
-  let info = document.getElementById('info')
-  let nameInput = document.getElementById('name-input')
+  let video = document.getElementById('video');
+  let canvas = document.createElement('canvas');
+  let button = document.getElementById('take-pic');
+  let registerFaceButton = document.getElementById('register-face');
+  let checkFaceButton = document.getElementById('check-face');
+  let info = document.getElementById('info-text');
+  let facts = document.getElementById('facts');
+  let item = document.getElementById('item');
+  let nameInput = document.getElementById('name-input');
 
-  let started = false
-  let sendRate = 100000 // interval
+  let started = false;
+  let sendRate = 7;// interval
 
   let constraints = {
     audio: false,
@@ -32,7 +34,7 @@ function main() {
 
     button.addEventListener('click', () => {
       takeAndSendPicture(video, canvas, '/send-static-image', null, (response) => {
-        facts.innerHTML = '' + response.replace('_', ' ') + '!'
+        item.innerHTML = '' + response.replace('_', ' ');
       })
     })
 
@@ -42,7 +44,7 @@ function main() {
 
     checkFaceButton.addEventListener('click', () => {
       takeAndSendPicture(video, canvas, '/check-face', null, (response) => {
-        info.innerHTML = 'Hello '+ response + '!'
+        info.innerHTML = 'Hello, '+ response + '!'
         console.log(response)
       })
     })
