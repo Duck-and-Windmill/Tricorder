@@ -52,5 +52,3 @@ def get_nutrition_data(image_class):
 	nutrition_facts["sodium"] = str(nutrients[5]["measures"][0]["value"]) + " milligrams"
 
 	return nutrition_facts
-
-print(get_nutrition_data("beef"))
