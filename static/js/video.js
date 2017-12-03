@@ -6,7 +6,7 @@ function main() {
   let canvas = document.getElementById('canvas')
   // let image = document.getElementById('image')
   let started = false
-  let sendRate = 7 // send rate per second
+  let sendRate = 3 // send rate per second
 
   let constraints = {
     audio: false,
@@ -69,23 +69,5 @@ function main() {
   })
 }
 
-function post(url, data) {
-  return new Promise((resolve, reject) => {
-    let request = new XMLHttpRequest();
-    request.open('POST', url, true);
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    request.addEventListener('readystatechange', (event) => {
-      if (request.readyState == XMLHttpRequest.DONE && request.status == 200) {
-        resolve(event.responseText)
-      }
-      // else {
-      //   reject()
-      // }
-    })
-
-    request.send(data);
-  })
-}
 
 window.onload = main

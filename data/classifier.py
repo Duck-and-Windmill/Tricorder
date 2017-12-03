@@ -17,5 +17,6 @@ class model():
 		print('Input image shape:', x.shape)
 		preds = model.predict(x)
 		print('Predicted:', decode_predictions(preds))
+		return decode_predictions(preds)
 	
 
