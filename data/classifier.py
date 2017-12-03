@@ -1,5 +1,5 @@
 import numpy as np
-import vgg16
+import data.vgg16
 from keras.preprocessing import image
 from keras.applications.imagenet_utils import preprocess_input
 from keras.applications.imagenet_utils import decode_predictions
@@ -7,7 +7,7 @@ from keras.applications.imagenet_utils import decode_predictions
 class model():
 
 	def __init__(self, img_path):
-		model = vgg16.VGG16(include_top=True, weights='imagenet')
+		model = data.vgg16.VGG16(include_top=True, weights='imagenet')
 
 		img = image.load_img(img_path, target_size=(224, 224))
 		x = image.img_to_array(img)
