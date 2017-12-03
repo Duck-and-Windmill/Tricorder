@@ -25,7 +25,7 @@ def get_nutrition_data(image_class):
 	ndbno = r["list"]["item"][0]["ndbno"]
 	print(ndbno)
 
-	nutrition_url = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=01009&ndbno=" + ndbno + "&ndbno=35193&type=f&format=json&api_key=FLKBoKOh7C1apAA4bPL0jH4GAW6f2wS9Lw0a2iFu"
+	nutrition_url = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=" + ndbno + "&type=f&format=json&api_key=FLKBoKOh7C1apAA4bPL0jH4GAW6f2wS9Lw0a2iFu"
 	nutrition_data = requests.get(nutrition_url)
 
 	return json.dumps(nutrition_data.json())
