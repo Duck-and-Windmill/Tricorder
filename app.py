@@ -6,9 +6,12 @@ import codecs
 import data.classifier
 import kairos_face
 import credentials
+import numpy as np
+import nutrition_data as BiggestNut
 
 kairos_face.settings.app_id = credentials.app_id
 kairos_face.settings.app_key = credentials.key
+
 
 template_dir = os.path.abspath('static')
 app = Flask(__name__, template_folder=template_dir)
@@ -21,18 +24,31 @@ def main():
 @app.route('/sendStaticImage',  methods=["POST"])
 def sendStaticImage():
     print('recieved image')
-    image64 = request.form['image']
-    # image64 = image64.split(',')[1]
-    # image_data = bytes(image64, encoding="ascii")
-
-    # with open('stream.jpg', 'wb') as fh:
-    # 	fh.write(base64.decodebytes(image_data))
-
     save_image(request.form['image'], 'stream.jpg')
-    classified = data.classifier.model('stream.jpg')
 
-    if not user:
-        faces = kairos_face.recognize_face(file='stream.jpg', gallery_name='hackathon')
+    model = data.classifier.model()
+    pred = model.predict_class('stream.jpg')
+
+    print(pred)
+
+    possibilities = [item for (itemId, item, confidence) in pred[0] ]
+    print(possibilities)
+
+    bestGuess = possibilities[0]
+    bestGuesses = json.dumps(possibilities)
+
+    #look up facts
+    print('Looking up Nutrition facts for: ', bestGuess)
+    Nuts = BiggestNut.get_nutrition_data(bestGuess)
+    # Nut=json.dumps(Nuts)
+    print(Nuts)
+    results=[possibilities, Nuts]
+    resultsString=json.dumps(results)
+    return resultsString
+    # classifier.model("test.png")
+
+    # if not user:
+        # faces = kairos_face.recognize_face(file='stream.jpg', gallery_name='hackathon')
 
     print(classified)
     print(faces)
@@ -50,10 +66,8 @@ def save_image(raw_data, name):
     image64 = raw_data.split(',')[1]
     image_data = bytes(image64, encoding="ascii")
 
-    with open(name, 'wb') as fh:
-    	fh.write(base64.decodebytes(image_data))
-
-    classified = data.classifier.model(raw_data)
+    with open(name, 'wb') as f:
+        f.write(base64.decodebytes(image_data))
 
 
 if __name__ == "__main__":

@@ -1,10 +1,9 @@
-'use strict'
-
 function main() {
   let video = document.getElementById('video')
   let canvas = document.getElementById('canvas')
+  let button = document.getElementById('button')
   let started = false
-  let sendRate = 3 // send rate per second
+  let sendRate = 8 // interval
 
   let constraints = {
     audio: false,
@@ -12,8 +11,9 @@ function main() {
   }
 
   video.addEventListener('playing', (event) => {
-    if (started) return
-
+    if (started) {
+      return
+    }
     started = true
 
     let width = video.videoWidth
@@ -25,32 +25,30 @@ function main() {
     canvas.width = width
     canvas.height = height
 
-    let context = canvas.getContext('2d')
-    context.drawImage(video, 0, 0, width, height)
-    let data = canvas.toDataURL('image/jpeg')
+    button.addEventListener('click', () => {
+      takePicture(video, canvas)
+    })
+
+    let data = takePicture(video, canvas)
 
     $.post('/sendStaticImage', {
       image : data
-    }).done(function(response) {
+    }).done((response) => {
       // alert('Server returned: ' + response);
-    }).fail(function() {
+    }).fail(() => {
       console.log('failed to return results');
-    });
+    })
 
     window.setInterval(() => {
-      let context = canvas.getContext('2d')
-      context.drawImage(video, 0, 0, width, height)
-      let data = canvas.toDataURL('image/jpeg')
+      let data = takePicture(video, canvas)
 
-      console.log(data)
-
-      $.post('/sendStaticImage', {
+      $.post('/send_static_image', {
         image : data
-      }).done(function(response) {
+      }).done((response) => {
         console.log('returned: '+response.data)
-      }).fail(function() {
-        console.log('failed to return results');
-      });
+      }).fail(() => {
+        console.log('failed to return results')
+      })
     }, sendRate * 1000)
   })
 
@@ -59,6 +57,14 @@ function main() {
     video.srcObject = stream
     video.play()
   })
+}
+
+function takePicture(video, canvas) {
+  let context = canvas.getContext('2d')
+  context.drawImage(video, 0, 0, canvas.width, canvas.height)
+  let data = canvas.toDataURL('image/jpeg')
+
+  return data
 }
 
 window.onload = main
