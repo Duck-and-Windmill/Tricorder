@@ -1,3 +1,5 @@
+# PROJECT: NACRE PICCOLO (aka Tricorder)
+
 ## Notes on installing and acknowledgements:
 
 - cython required for fuzzy match
